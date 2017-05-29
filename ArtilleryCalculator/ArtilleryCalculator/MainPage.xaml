@@ -10,12 +10,12 @@
             <ContentPage Title="{Binding Name}">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="2*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="3*" />
                         <RowDefinition Height="2*" />
-                        <RowDefinition Height="2*" />
-                        <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -34,13 +34,13 @@
                     <Label Text="Высота:" Grid.Row="1" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                     <Entry  Grid.Row="1" Grid.Column="3" Keyboard="Numeric" FontSize="32" Text="{Binding TargetH}"/>
 
-                    <Entry Placeholder="X ОП" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding GunX}"/>
-                    <Entry Placeholder="Y ОП" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding GunY}"/>
+                    <Entry Placeholder="X ОП" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="60" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding GunX}"/>
+                    <Entry Placeholder="Y ОП" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="60" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding GunY}"/>
 
-                    <Entry Placeholder="X Цели" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding TargetX}"/>
-                    <Entry Placeholder="Y Цели" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding TargetY}"/>
+                    <Entry Placeholder="X Цели" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" FontSize="60" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding TargetX}"/>
+                    <Entry Placeholder="Y Цели" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontSize="60" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding TargetY}"/>
 
-                    <Entry Placeholder="Угол ТН" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding TN}"/>
+                    <Entry Placeholder="Угол ТН" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontSize="60" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding TN}"/>
                     <StackLayout Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <Label Text="Y вниз" />
                         <Switch   IsToggled="{Binding InvertY}"/>

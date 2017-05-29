@@ -35,7 +35,8 @@ namespace ArtilleryCalculator
 
         private double Elev(int index)
         {
-            var t = table[index].Table;
+            var s = table[index];
+            var t = s.Table;
             var points = t.Zip(t.Skip(1), Tuple.Create).SkipWhile(p => p.Item2[0] < this.Distance).FirstOrDefault();
             if (points == null) return -1;
             var low = points.Item1;
@@ -43,18 +44,22 @@ namespace ArtilleryCalculator
             var k = (this.Distance - low[0]) / (high[0] - low[0]);
             var dh = (this.TargetH - this.GunH) / 100;
 
-            return low[1] * (1 - k) + high[1] * k + (low[2] * (1 - k) + high[3] * k) * dh;
+            return low[1] * (1 - k) + high[1] * k + (low[2] * (1 - k) + high[2] * k + 1) * dh * s.DElevCoeff;
         }
+
+        
     }
 
     public sealed class ArtTable
     {
-        public ArtTable(string name, double[][] table)
+        public ArtTable(string name, double[][] table, double dElevCoeff = 1)
         {
             Name = name;
             Table = table;
+            DElevCoeff = dElevCoeff;
         }
         public string Name { get; private set; }
         public double[][] Table { get; private set; }
+        public double DElevCoeff { get; private set; }
     }
 }
