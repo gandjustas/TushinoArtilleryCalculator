@@ -1,11 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ArtilleryCalculator"
-             x:Class="ArtilleryCalculator.MainPage">
+             x:Class="ArtilleryCalculator.MainPage"
+             xmlns:l="clr-namespace:AiForms.Layouts;assembly=AiForms.Layouts"             
+             >
+    <TabbedPage.ItemTemplate>
+        <DataTemplate>
+            <ContentPage Title="{Binding Name}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-  <Label Text="Welcome to Xamarin Forms!"
-           VerticalOptions="Center"
-           HorizontalOptions="Center" />
+                    <Label Text="Огневая позиция" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalTextAlignment="Center"/>
+                    <Label Text="Данные цели" Grid.Row="0" Grid.Column="2"  Grid.ColumnSpan="2"  HorizontalTextAlignment="Center"/>
 
-</ContentPage>
+                    <Label Text="Высота:" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Entry Grid.Row="1" Grid.Column="1" Keyboard="Numeric" FontSize="32" Text="{Binding GunH}"/>
+
+                    <Label Text="Высота:" Grid.Row="1" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Entry  Grid.Row="1" Grid.Column="3" Keyboard="Numeric" FontSize="32" Text="{Binding TargetH}"/>
+
+                    <Entry Placeholder="X ОП" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding GunX}"/>
+                    <Entry Placeholder="Y ОП" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding GunY}"/>
+
+                    <Entry Placeholder="X Цели" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding TargetX}"/>
+                    <Entry Placeholder="Y Цели" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding TargetY}"/>
+
+                    <Entry Placeholder="Угол ТН" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontSize="64" HorizontalTextAlignment="Center" Keyboard="Numeric" Text="{Binding TN}"/>
+                    <StackLayout Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="Y вниз" />
+                        <Switch   IsToggled="{Binding InvertY}"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical"  Grid.Row="5" Grid.Column="0" >
+                        <Label Text="Угол"  HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding Angle, StringFormat='{0:F0}'}" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical"  Grid.Row="5" Grid.Column="1" >
+                        <Label Text="Дистанция" HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding Distance, StringFormat='{0:F0}'}"  HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical"  Grid.Row="5" Grid.Column="2" >
+                        <Label Text="АЗИМУТ" HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding Azimuth, StringFormat='{0:F0}'}" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical"  Grid.Row="5" Grid.Column="3" >
+                        <Label Text="ДУГОЛ" HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding DU, StringFormat='{0:F0}'}" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <l:RepeatableWrapLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4"
+				ItemsSource="{Binding Settings}"                                
+				UniformColumns="2"
+				>
+                        <l:RepeatableWrapLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" >
+                                    <Label Text="{Binding Name}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" />
+                                    <Label Text="{Binding Elev, StringFormat='{0:F0}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </l:RepeatableWrapLayout.ItemTemplate>
+                    </l:RepeatableWrapLayout>
+
+                </Grid>
+            </ContentPage>
+        </DataTemplate>
+    </TabbedPage.ItemTemplate>
+</TabbedPage>
